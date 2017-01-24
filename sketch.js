@@ -1,6 +1,33 @@
+let height = 400;
+let width = 400;
+
 function setup() {
+  createCanvas(width,height);
 }
 
 function draw() {
-  ellipse(50, 50, 80, 80);
+  background(51);
+  s.update();
 }
+
+
+snake = function () {
+  this.x = 0;
+  this.y = 0;
+
+  this.xSpeed = 1;
+  this.ySpeed = 1;
+
+
+  this.show = function (){
+    rect(this.x,this.y,20,20);
+  }
+
+  this.update = function(){
+    this.x = constrain(this.x + this.xSpeed,0,width-20);
+    this.y = constrain(this.y + this.ySpeed,0, height-20);
+    this.show()
+  }
+}
+
+let s = new snake();
