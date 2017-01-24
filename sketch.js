@@ -10,6 +10,21 @@ function draw() {
   s.update();
 }
 
+function keyPressed() {
+  if (keyCode === UP_ARROW){
+    s.changeDir(0,-1);
+  }
+  else if(keyCode === DOWN_ARROW){
+    s.changeDir(0,1);
+  }
+  else if(keyCode === RIGHT_ARROW){
+    s.changeDir(1,0);
+  }
+  else if(keyCode === LEFT_ARROW){
+    s.changeDir(-1,0);
+  }
+}
+
 
 snake = function () {
   this.x = 0;
@@ -21,6 +36,11 @@ snake = function () {
 
   this.show = function (){
     rect(this.x,this.y,20,20);
+  }
+
+  this.changeDir = function(x,y){
+    this.xSpeed = x;
+    this.ySpeed = y;
   }
 
   this.update = function(){
