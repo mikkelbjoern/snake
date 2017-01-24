@@ -3,10 +3,11 @@ let width = 400;
 
 function setup() {
   createCanvas(width,height);
+  frameRate(5);
 }
 
 function draw() {
-  background(51);
+  background(55);
   s.update();
 }
 
@@ -30,17 +31,18 @@ snake = function () {
   this.x = 0;
   this.y = 0;
 
-  this.xSpeed = 1;
-  this.ySpeed = 1;
+  this.xSpeed = 20;
+  this.ySpeed = 20;
 
 
   this.show = function (){
+    fill('#0f0');
     rect(this.x,this.y,20,20);
   }
 
   this.changeDir = function(x,y){
-    this.xSpeed = x;
-    this.ySpeed = y;
+    this.xSpeed = x*20;
+    this.ySpeed = y*20;
   }
 
   this.update = function(){
