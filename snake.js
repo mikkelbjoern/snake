@@ -20,6 +20,7 @@ snake = function () {
   this.update = function(){
     this.x = constrain(this.x + this.xSpeed,0,width-20);
     this.y = constrain(this.y + this.ySpeed,0, height-20);
+    this.checkHit();
     this.moveTail();
     this.showTail();
     this.show();
@@ -36,9 +37,18 @@ snake = function () {
     for (var i=0; i < this.tail.length; i++){
       var x = this.tail[i][0];
       var y = this.tail[i][1];
-      console.log(x,y)
       fill('#92f442');
       rect(x,y,20,20);
+    }
+  }
+
+  this.checkHit = function(){
+    if (this.tail.indexOf([this.x,this.y]) == -1){
+      console.log([this.x,this.y], this.tail[0]);
+      return false
+    } else {
+      console.log("I'm hit!");
+      return true
     }
   }
 }
